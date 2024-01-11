@@ -43,5 +43,6 @@ public class Main {
             result = Math.round(result * 100.0) / 100.0;
             System.out.println("Ваш расход топлива: " + result + "л/100км \n");
         }
+        System.out.println("Програма завершена.");
     }
 }
