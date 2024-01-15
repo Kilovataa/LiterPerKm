@@ -42,6 +42,7 @@ public class Main {
             double result = liter / distance * 100;
             result = Math.round(result * 100.0) / 100.0;
             System.out.println("Ваш расход топлива: " + result + "л/100км \n");
+            SQLconnection.testSQL();
         }
         System.out.println("Программа завершена.");
     }
