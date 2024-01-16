@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
         boolean exitPoint = true;
@@ -42,7 +44,10 @@ public class Main {
             double result = liter / distance * 100;
             result = Math.round(result * 100.0) / 100.0;
             System.out.println("Ваш расход топлива: " + result + "л/100км \n");
-            SQLconnection.testSQL();
+            Date date = new Date();
+            String dateSQL = String.valueOf(date);
+            String date_d = "2024-01-16";
+            SQLconnection.testSQL(dateSQL, result, date_d);
         }
         System.out.println("Программа завершена.");
     }

@@ -1,18 +1,14 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SQLconnection {
 
     //
     //Class.forName("com.mysql.jdbc.Driver").newInstance();
-    public static void testSQL() {
-        try (Connection con = DriverManager.getConnection("jdbc: mysql://localhost: 3306/litersql", "root", "password")) {
-            System.out.println("Database connected!");
-        } catch (ClassNotFoundException e) {
-            System.out.println("JDBC driver not found!");
-            e.printStackTrace();
+    public static void testSQL(String dateSQL, double result, String date_d) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://sql11.freesqldatabase.com:3306/litersql", "sql11676696", "qq9MbkhYY7")) {
+            PreparedStatement stat = (PreparedStatement) conn.createStatement();
+            ResultSet rs = stat.executeQuery(String.format("INSERT INTO literDB (Date, Result, Date_d) VALUES (%s,%f,%s)", dateSQL, result, date_d));
+            System.out.println("Данные сохранены.");
         } catch (SQLException e) {
             System.out.println("Error connecting to the database!");
             e.printStackTrace();
