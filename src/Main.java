@@ -1,4 +1,5 @@
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -41,13 +42,13 @@ public class Main {
                     //ScannerClass.scan.next();
                 }
             }
-            double result = liter / distance * 100;
-            result = Math.round(result * 100.0) / 100.0;
+            double result1 = liter / distance * 100;
+            double result = Math.round(result1 * 100.0) / 100.0;
             System.out.println("Ваш расход топлива: " + result + "л/100км \n");
-            Date date = new Date();
-            String dateSQL = String.valueOf(date);
-            String date_d = "2024-01-16";
-            SQLconnection.testSQL(dateSQL, result, date_d);
+            LocalDate dateLocal = LocalDate.now();
+            String date = String.valueOf(dateLocal);
+            System.out.println(date);
+            SQLconnect.testSQL(result, date);
         }
         System.out.println("Программа завершена.");
     }
