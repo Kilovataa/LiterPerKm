@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         boolean exitPoint = true;
-        System.out.println("Для выхода введите 'q', для продолжения нажмите любую клавишу");
+        System.out.println("Для выхода введите 'q', для продолжения нажмите любую клавишу:");
         String stop;
         stop = ScannerClass.scan.nextLine();
         if(stop.equals("q")) {
@@ -25,7 +25,6 @@ public class Main {
                         break outerLoop;
                     }
                     System.out.println("Ошибка! Необходимо ввести число. Повторите ввод: ");
-                    //ScannerClass.scan.next();
                 }
             }
             System.out.print("Введите пройденное растояние: ");
@@ -39,7 +38,6 @@ public class Main {
                         break outerLoop;
                     }
                     System.out.println("Ошибка! Необходимо ввести число. Повторите ввод: ");
-                    //ScannerClass.scan.next();
                 }
             }
             double result1 = liter / distance * 100;
@@ -47,7 +45,6 @@ public class Main {
             System.out.println("Ваш расход топлива: " + result + "л/100км \n");
             LocalDate dateLocal = LocalDate.now();
             String date = String.valueOf(dateLocal);
-            System.out.println(date);
             SQLconnect.testSQL(result, date);
         }
         System.out.println("Программа завершена.");
