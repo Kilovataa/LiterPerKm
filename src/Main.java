@@ -4,49 +4,23 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         boolean exitPoint = true;
-        System.out.println("Для выхода введите 'q', для продолжения нажмите любую клавишу:");
-        String stop;
-        stop = ScannerClass.scan.nextLine();
-        if(stop.equals("q")) {
-            exitPoint = false;
-        }
+        System.out.println("Выберите действие:\n " +
+                "1. Расчитать расход топлива.\n " +
+                "2. Показать информацию о последнем замере расхода.\n " +
+                "3. Показать средний расход топлива.\n " +
+                "q - Выход из программы.");
         outerLoop:
         while (exitPoint) {
-            double liter = 0;
-            double distance = 0;
-            System.out.print("Введите затраченное количество топлива: ");
-            while (ScannerClass.scan.hasNext()) {
-                if(ScannerClass.scan.hasNextDouble()) {
-                    liter = ScannerClass.scan.nextDouble();
-                    break;
-                } else {
-                    if(ScannerClass.scan.next().equals("q")) {
-                        exitPoint = false;
-                        break outerLoop;
-                    }
-                    System.out.println("Ошибка! Необходимо ввести число. Повторите ввод: ");
-                }
+            String scanner;
+            scanner = ScannerClass.scan.nextLine();
+            switch (scanner) {
+                case "1" -> BodyProgramm.calculateLiterPerKM();
+                case "2" -> SQLconnect.showLastCalculate();
+                case "3" -> SQLconnect.showAverageCalculate();
+                case "q" -> exitPoint = false;
+                case "i" -> System.out.println(BodyProgramm.info);
+                default -> System.out.println("Ошибка.Выберите действие или введите i");
             }
-            System.out.print("Введите пройденное растояние: ");
-            while (ScannerClass.scan.hasNext()) {
-                if(ScannerClass.scan.hasNextDouble()) {
-                    distance = ScannerClass.scan.nextDouble();
-                    break;
-                } else {
-                    if(ScannerClass.scan.next().equals("q")) {
-                        exitPoint = false;
-                        break outerLoop;
-                    }
-                    System.out.println("Ошибка! Необходимо ввести число. Повторите ввод: ");
-                }
-            }
-            double result1 = liter / distance * 100;
-            double result = Math.round(result1 * 100.0) / 100.0;
-            System.out.println("Ваш расход топлива: " + result + "л/100км \n");
-            LocalDate dateLocal = LocalDate.now();
-            String date = String.valueOf(dateLocal);
-            SQLconnect.testSQL(result, date);
         }
-        System.out.println("Программа завершена.");
     }
 }
