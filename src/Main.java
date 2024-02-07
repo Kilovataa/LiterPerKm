@@ -47,7 +47,7 @@ public class Main {
             System.out.println("Ваш расход топлива: " + result + "л/100км \n");
             LocalDate dateLocal = LocalDate.now();
             String date = String.valueOf(dateLocal);
-            System.out.println(date);
+            System.out.println(result);
             SQLconnect.testSQL(result, date);
         }
         System.out.println("Программа завершена.");
