@@ -43,7 +43,9 @@ public class SQLconnect {
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()) {
                 double result = Math.round(rs.getDouble(1) * 100.0) / 100.0;
-                System.out.println("Средний расход топлива за всё время: " + result + "л/100км\n\n" + BodyProgramm.infoText);
+                System.out.println("Средний расход топлива за всё время: "
+                                    + result + "л/100км\n\n"
+                                    + BodyProgramm.infoText);
             }
         } catch (SQLException e) {
             System.out.println("Error connecting to the database!");
