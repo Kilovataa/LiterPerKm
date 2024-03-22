@@ -14,6 +14,7 @@ public class Main {
                 case "2" -> SQLconnect.showLastCalculate();
                 case "3" -> SQLconnect.showAverageCalculate();
                 case "4" -> Palindrom.isPalindrome();
+                case "5" -> PrimeNumber.isPrimeNumber();
                 case "q" -> exitPoint = false;
                 default -> System.out.println(BodyProgramm.infoText);
             }
