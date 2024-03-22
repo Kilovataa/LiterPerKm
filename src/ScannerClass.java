@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
 public class ScannerClass {
     static Scanner scan = new Scanner(System.in);
     public static StringBuilder getWord() {
@@ -10,7 +9,7 @@ public class ScannerClass {
         while (scan.hasNext()) {
             if(scan.hasNextLine()) {
                 String str = scan.nextLine();
-                if(isAlphabetic(str)) {
+                if(Pattern.matches("[а-яёА-ЯЁa-zA-Z]+", str)) {
                     strInput.append(str);
                     break;
                 } else System.out.println("Необходимо ввести слово!");
@@ -33,10 +32,5 @@ public class ScannerClass {
              }
         }
         return num;
-    }
-    public static boolean isAlphabetic(String s) {
-        if (Pattern.matches("[a-zA-Z]+",s)) {
-            return true;
-        } else return false;
     }
 }
